@@ -1,0 +1,55 @@
+<div class="d-flex justify-content-center my-5">
+    <div class="d-flex flex-column bg-semi-gray text-light align-items-center w-50 rounded p-2 overflow-hidden">
+        <!-- button group to toggle between signin and signup -->
+        <div class="btn-group btn-dark text-light w-50 rounded my-2">
+            <button (click)="toggler(true)"
+                [ngClass]="selectionStyleSignin()"
+            >SignIn</button>
+            <button (click)="toggler(false)"
+                [ngClass]="selectionStyleSignup()"
+            >SignUp</button>
+        </div>
+
+        <!-- Signin and SignUp main Section -->
+        <ng-container *ngIf="check(); else signinComp">
+            <div class="d-flex flex-column align-items-center my-2 bg-height p-4">
+                <!-- signin contents -->
+                <h4>Sign In</h4>
+                <div class="d-flex flex-column align-items-center my-2">
+                    <input #userName
+                        [ngClass]="[changeStyleSelected('userName')]"
+                        (focus)="[changeInputState('userName'),userEmailErr=false,userPasswordErr=false]"
+                        type="email"
+                        (blur)="unsetSelected('userName')"
+                        placeholder="User Email"
+                    >
+                    <ng-container *ngIf="userEmailErr;else emptyEmailSpan">
+                        <span class="text-danger">Invalid EmailId</span>
+                    </ng-container>
+                    <ng-template #emptyEmailSpan>
+                        <span class="text-danger"></span>
+                    </ng-template>
+                    <input #password
+                        type="password"
+                        [ngClass]="[changeStyleSelected('userPass')]"
+                        (focus)="[changeInputState('userPass'),userEmailErr=false,userPasswordErr=false]"
+                        (blur)="unsetSelected('userPass')"
+                        placeholder="Password"
+                    >
+                    <ng-container *ngIf="userPasswordErr;else emptyPassSpan">
+                        <span class="text-danger">Invalid Password</span>
+                    </ng-container>
+                    <ng-template #emptyPassSpan>
+                        <span class="text-danger"></span>
+                    </ng-template>
+                    <button class="btn btn-primary my-2 text-dark"
+                        (click)="[CheckUserData(userName.value, password.value),userName.value='',password.value='']"
+                    >SignIn</button>
+                </div>
+            </div>    
+        </ng-container>
+        <ng-template #signinComp>
+            <app-signup (newResistration)="passData($event)"></app-signup>
+        </ng-template>
+    </div>
+</div>

@@ -1,0 +1,25 @@
+<!-- User Details component -->
+<div class="d-flex w-100 my-5 justify-content-center">
+    <div class="card w-50 text-center">
+        <div class="card-body">
+            <h4 class="card-title">User Details</h4>
+            <img class="img-profile"
+                src="../../../assets/user-large.png"
+            >
+            <div class="d-flex justify-content-center text-center my-3">
+                <ul class="list-group w-50 list-group-flush">
+                    <li class="list-group-item"><strong>Name</strong></li>
+                    <li class="list-group-item"><strong>Email</strong></li>
+                    <li class="list-group-item"><strong>Phone no.</strong></li>
+                    <li class="list-group-item"><strong>Place</strong></li>
+                </ul>
+                <ul class="list-group w-50 list-group-flush">
+                    <li class="list-group-item">{{userDetailsGlobal.username}}</li>
+                    <li class="list-group-item">{{userDetailsGlobal.email}}</li>
+                    <li class="list-group-item">{{userDetailsGlobal.phno}}</li>
+                    <li class="list-group-item">{{userDetailsGlobal.place}}</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

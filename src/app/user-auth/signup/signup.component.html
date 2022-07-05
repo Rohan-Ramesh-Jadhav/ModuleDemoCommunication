@@ -1,0 +1,106 @@
+
+ <!-- signin contents -->
+ <div class="d-flex flex-column align-items-center my-2 bg-height p-4">
+    <h4>Sign Up</h4>
+    <div class="d-flex flex-column align-items-center my-2">
+        <!-- user name section -->
+        <input #userName
+            [ngClass]="[changeStyleSelected('userName')]"
+            (focus)="[changeInputState('userName'),
+                userNameErr=false,
+                setAllSpansBack(),
+                userName.value=''
+            ]"
+            type="text"
+            (blur)="unsetSelected('userName')"
+            placeholder="Enter Names"
+        >
+        <ng-container *ngIf="userNameErr;else emptyNameSpan">
+            <span class="text-danger">User name must be only alphabets, must fill.</span>
+        </ng-container>
+        <ng-template #emptyNameSpan>
+            <span class="text-danger"></span>
+        </ng-template>
+
+        <!-- user Email section-->
+        <input #userEmail
+            [ngClass]="[changeStyleSelected('userEmail')]"
+            (focus)="[changeInputState('userEmail'),
+                userEmailErr=false,
+                userEmail.value='',
+                setAllSpansBack()
+            ]"
+            type="email"
+            (blur)="unsetSelected('userEmail')"
+            placeholder="Enter Email"
+        >
+        <ng-container *ngIf="userEmailErr;else emptyEmailSpan">
+            <span class="text-danger">Incorrect Email Format</span>
+        </ng-container>
+        <ng-template #emptyEmailSpan>
+            <span class="text-danger"></span>
+        </ng-template>
+
+        <!-- user phone number section -->
+        <input #userPhno
+            [ngClass]="[changeStyleSelected('userPhno')]"
+            (focus)="[changeInputState('userPhno'),
+                userPhnoErr=false,
+                setAllSpansBack(),
+                userPhno.value=''
+            ]"
+            type="number"
+            (blur)="unsetSelected('userPhno')"
+            placeholder="Enter Phone number"
+        >
+        <ng-container *ngIf="userPhnoErr;else emptyPhnoSpan">
+            <span class="text-danger">Incorrect Phone number</span>
+        </ng-container>
+        <ng-template #emptyPhnoSpan>
+            <span class="text-danger"></span>
+        </ng-template>
+
+        <!-- user password section -->
+        <input #userPassword
+            [ngClass]="[changeStyleSelected('userPass')]"
+            (focus)="[changeInputState('userPass'),
+                userPassErr=false,
+                setAllSpansBack(),
+                userPassword.value=''
+            ]"
+            type="password"
+            (blur)="unsetSelected('userPass')"
+            placeholder="Enter Password"
+        >
+        <ng-container *ngIf="userPassErr;else emptyPassSpan">
+            <span class="text-danger">Password must be filled</span>
+        </ng-container>
+        <ng-template #emptyPassSpan>
+            <span class="text-danger"></span>
+        </ng-template>
+
+        <!-- user place section -->
+        <input #userPlace
+            [ngClass]="[changeStyleSelected('userPlace')]"
+            (focus)="[changeInputState('userPlace'),
+                userPlaceErr=false,
+                setAllSpansBack(),
+                userPlace.value=''
+            ]"
+            type="text"
+            (blur)="unsetSelected('userPlace')"
+            placeholder="Enter Place"
+        >
+        <ng-container *ngIf="userPlaceErr;else emptyPlaceSpan">
+            <span class="text-danger">Place must be alphabetic characters, must fill</span>
+        </ng-container>
+        <ng-template #emptyPlaceSpan>
+            <span class="text-danger"></span>
+        </ng-template>
+
+        <button class="btn btn-primary my-4 text-dark"
+            (click)="[setUserData(userName.value,userEmail.value,userPhno.value,userPassword.value,userPlace.value)]"
+        >Register</button>
+    </div>
+</div>    
+

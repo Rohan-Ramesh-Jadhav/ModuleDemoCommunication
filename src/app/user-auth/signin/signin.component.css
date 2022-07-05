@@ -1,0 +1,13 @@
+.btn-gray{
+    background-color: gray;
+    color: rgba(0, 0, 0, 0.747);
+}
+
+.bg-semi-gray{
+    background-color: rgb(66, 65, 65);
+}
+
+.bg-height{
+    height: 75vh;
+    overflow-x: hidden;
+}
